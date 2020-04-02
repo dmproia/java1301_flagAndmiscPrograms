@@ -1,0 +1,199 @@
+import java.awt.*;
+import javax.swing.*;
+import java.util.Scanner;
+import java.io.*;
+import java.io.IOException;
+import java.awt.geom.Ellipse2D;
+
+
+/**
+ * Class IOApplet - example that shows the use of reading from a file with an Applet
+ * 
+ * @author (David Proia) 
+ * @version (Assignment 5)
+ */
+public class PlanetApplet extends JApplet
+{
+
+    Planet Planet1, Planet2, Planet3, Planet4, Planet5;
+    double tMass;
+    double tDensity;
+    double tVolume;
+    double tSurfaceArea;
+    double aveDensity;
+    int counter;
+    
+/**
+     * Called by the browser or applet viewer to inform this JApplet that it
+     * has been loaded into the system. It is always called before the first 
+     * time that the start method is called.
+     */
+    public void init() 
+    {
+        resize(1200,600);
+        getData();
+    }
+   
+    /**
+     * parseLine method receives a line of text for an employee
+     * of the form name,age,certified where each field is separated by a comma
+     * the line is parsed and a rsponse is built and returned
+     * 
+     * @parm line - line of text
+     * @return - Employee
+     */
+    private Planet parseLine(String line) 
+    {
+      JOptionPane.showMessageDialog(null, "entering parseLine");
+        
+      Scanner lineScanner;
+      String name;
+      double mass;
+      double volume;
+      double surfaceArea;
+      double radius;
+      double distance;
+      double density;
+      Planet plan;
+      
+      lineScanner = new Scanner(line);
+      lineScanner.useDelimiter("%");
+      
+      name = lineScanner.next();
+      radius = lineScanner.nextDouble();
+      mass = lineScanner.nextDouble();
+      distance = lineScanner.nextDouble();      
+      
+      plan = new Planet (name, radius, mass, distance);
+    
+      tVolume += plan.getvolume();
+      tMass += plan.getmass();
+      tDensity += plan.getdensity();
+      tSurfaceArea += plan.getsurfaceArea();
+      counter += 1; 
+      
+      return plan;
+    }
+    
+    //reads data files and scans lines
+    public void getData()
+    {
+        try
+        {
+            String fileName = "data.txt"; //comma separated file
+            File dataFile;
+            Scanner scan;
+                
+            dataFile = new File(fileName);
+            scan = new Scanner(dataFile);
+        
+            String line;
+            
+            line = scan.nextLine();
+            Planet1 = parseLine(line);
+            
+            line = scan.nextLine();
+            Planet2 = parseLine(line);
+            
+            line = scan.nextLine();
+            Planet3 = parseLine(line);
+            
+            line = scan.nextLine();
+            Planet4 = parseLine(line);  
+            
+            line = scan.nextLine();
+            Planet5 = parseLine(line);            
+            
+        }
+        catch (IOException exception)
+        {
+            JOptionPane.showMessageDialog(null, "file not opened");
+        }       
+    }
+    
+    /**
+     * Paint method for applet.
+     * 
+     * @param  g   the Graphics object for this applet
+     */
+    public void paint(Graphics g)
+    {
+        //loads up graphics
+        Graphics2D g2;
+        g2 = (Graphics2D) g;
+        
+        //Displays planets 1-5
+        displayPlanet( g, Planet1, 20, 120);
+        displayPlanet( g, Planet2, 20, 160);
+        displayPlanet( g, Planet3, 20, 200);
+        displayPlanet( g, Planet4, 20, 240);
+        displayPlanet( g, Planet5, 20, 280); 
+        
+        //displays totals and averages
+        aveDensity = (tDensity / counter); 
+        String responds1 = "Average Density: " + aveDensity;
+        g.drawString(responds1, 40, 320);
+        String respond2 = "Total Density: " + tDensity;
+        g.drawString(respond2, 40, 360);        
+        String respond3 = "Total Volume: " + tVolume;
+        g.drawString(respond3, 40, 400);       
+        String respond4 = "Total Mass: " + tMass;
+        g.drawString(respond4, 40, 440);
+        String respond5 = "Total SurfaceArea: " + tSurfaceArea;       
+        g.drawString(respond5, 40, 480);
+        
+        //Title of program
+        Color c1 = new Color (0xFF0000);
+        g2.setColor(c1);
+        Font f = new Font ("Arial", Font.ITALIC, 25);
+        g2.setFont (f);
+        g2.drawString("The planets of our solar system", 20,55);
+        
+        //Author
+        Color c2 = new Color (0x00008B);
+        g2.setColor(c2);
+        Font f2 = new Font ("Arial", Font.BOLD, 20);
+        g2.setFont (f2);
+        g2.drawString("David Proia", 30,85);        
+        
+        //Planet pictures
+        Ellipse2D.Double picture = new Ellipse2D.Double(500,350, 100, 100);
+        g2.draw(picture);
+        g2.setColor(Color.BLUE);
+        g2.fill(picture);
+        
+        Ellipse2D.Double picture1 = new Ellipse2D.Double(540,380, 80, 80);
+        g2.draw(picture1);
+        g2.setColor(Color.RED);
+        g2.fill(picture1);        
+
+        Ellipse2D.Double picture2 = new Ellipse2D.Double(575,420, 50, 50);
+        g2.draw(picture2);
+        g2.setColor(Color.YELLOW);
+        g2.fill(picture2);       
+        
+        Ellipse2D.Double picture3 = new Ellipse2D.Double(800,420, 150, 150);
+        g2.draw(picture3);
+        g2.setColor(Color.GREEN);
+        g2.fill(picture3);          
+        
+        Ellipse2D.Double picture4 = new Ellipse2D.Double(1000,300, 20, 20);
+        g2.draw(picture4);
+        g2.setColor(Color.ORANGE);
+        g2.fill(picture4);           
+
+
+    }
+ 
+    //display planets and details
+    public void displayPlanet(Graphics g, Planet plan, int x, int y)
+    {
+        String response;
+        // build text to display on applet
+        response = "Name: " + plan.getname() + " -- Mass: " + plan.getmass() + " -- Volume: " + plan.getvolume() + " -- Radius: " + plan.getradius()
+           + " -- Distance: " + plan.getdistance() + " -- SurfaceArea: " + plan.getsurfaceArea() + " -- Density" + plan.getdensity();
+        g.drawString(response, x+20, y);
+
+    }
+
+}

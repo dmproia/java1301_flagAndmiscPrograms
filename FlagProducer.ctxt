@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=FlagProducer()
+comment1.params=line
+comment1.target=Flag\ parseLine(java.lang.String)
+comment2.params=
+comment2.target=void\ getData()
+comment3.params=g
+comment3.target=void\ paintComponent(java.awt.Graphics)
+numComments=4

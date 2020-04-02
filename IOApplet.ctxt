@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ init()
+comment0.text=\r\n\ Called\ by\ the\ browser\ or\ applet\ viewer\ to\ inform\ this\ JApplet\ that\ it\r\n\ has\ been\ loaded\ into\ the\ system.\ It\ is\ always\ called\ before\ the\ first\ \r\n\ time\ that\ the\ start\ method\ is\ called.\r\n
+comment1.params=
+comment1.target=void\ getData()
+comment2.params=g
+comment2.target=void\ paint(java.awt.Graphics)
+comment2.text=\r\n\ Paint\ method\ for\ applet.\r\n\ \r\n\ @param\ \ g\ \ \ the\ Graphics\ object\ for\ this\ applet\r\n
+numComments=3

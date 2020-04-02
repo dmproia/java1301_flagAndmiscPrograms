@@ -1,0 +1,8 @@
+Italy,green,white,red
+Bulgaria,white,green,red
+Chad,blue,yellow,red
+Seirra Leone,green,white,blue
+Italy,green,white,red
+Bulgaria,white,green,red
+Chad,blue,yellow,red
+Seirra Leone,green,white,blue

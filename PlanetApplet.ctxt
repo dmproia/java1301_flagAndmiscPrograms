@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ init()
+comment0.text=\r\n\ Called\ by\ the\ browser\ or\ applet\ viewer\ to\ inform\ this\ JApplet\ that\ it\r\n\ has\ been\ loaded\ into\ the\ system.\ It\ is\ always\ called\ before\ the\ first\ \r\n\ time\ that\ the\ start\ method\ is\ called.\r\n
+comment1.params=line
+comment1.target=Planet\ parseLine(java.lang.String)
+comment1.text=\r\n\ parseLine\ method\ receives\ a\ line\ of\ text\ for\ an\ employee\r\n\ of\ the\ form\ name,age,certified\ where\ each\ field\ is\ separated\ by\ a\ comma\r\n\ the\ line\ is\ parsed\ and\ a\ rsponse\ is\ built\ and\ returned\r\n\ \r\n\ @parm\ line\ -\ line\ of\ text\r\n\ @return\ -\ Employee\r\n
+comment2.params=
+comment2.target=void\ getData()
+comment3.params=g
+comment3.target=void\ paint(java.awt.Graphics)
+comment3.text=\r\n\ Paint\ method\ for\ applet.\r\n\ \r\n\ @param\ \ g\ \ \ the\ Graphics\ object\ for\ this\ applet\r\n
+comment4.params=g\ plan\ x\ y
+comment4.target=void\ displayPlanet(java.awt.Graphics,\ Planet,\ int,\ int)
+numComments=5
